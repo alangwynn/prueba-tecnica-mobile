@@ -22,6 +22,10 @@ class _HomeState extends State<HomeScreen> {
   void initState() {
     super.initState();
     EasyLoading.show();
+    Timer(const Duration(seconds: 3), getData);
+  }
+
+  void getData() {
     Clientes.getClientes().then((dynamic response) {
       var decodedResponse = utf8.decode(response.bodyBytes);
       dynamic parsedJson = json.decode(decodedResponse);
